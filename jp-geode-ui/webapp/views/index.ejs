@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include partials/header %>
+</head>
+<body ng-app="net.jp.geode-ui" ng-controller="GeodeUiCtrl">
+    <h1>Hack Geode UI</h1>
+    <p class="title">Data stream</p>
+    <div id="chart"></div>
+    <div id="events">
+        <p class="title">Patterns detected in the past</p>
+        <jp-geode-ts-event
+            ng-show="model.tsEvents.length"
+            ng-repeat="evt in model.tsEvents"
+            ng-model="evt"
+            ng-style="{ 'opacity': (1 / ($index + 1)) }">
+        </jp-geode-ts-event>
+        <p ng-show="!model.tsEvents.length"><em><small>No events detected yet...<small></em></p>
+    </div>
+    <footer>
+        <small>Proudly developed by <b>Jack</b> and <b>JP</b></small>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,1 @@
+include 'jp-geode-common', 'jp-geode-server', 'jp-geode-client', 'jp-geode-shell', 'jp-geode-ui'

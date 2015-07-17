@@ -1,0 +1,53 @@
+buildscript {
+    ext {
+        springBootVersion = '1.2.5.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.spring.gradle:dependency-management-plugin:0.5.1.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'io.spring.dependency-management'
+
+jar {
+    baseName = 'jp-geode-client'
+    version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile ("org.springframework.boot:spring-boot-starter-web:$springBootVersion") {
+        exclude module : 'spring-boot-starter-logging'
+    }
+    compile ("org.springframework.boot:spring-boot-starter:$springBootVersion") {
+        exclude module : 'spring-boot-starter-logging'
+    }
+//    compile "org.springframework.data:spring-data-gemfire:$geodeVersion"
+//    compile "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:$hibernateVersion"
+    compile project(':jp-geode-common')
+//    runtime "org.slf4j:slf4j-log4j12:$slf4jVersion"
+//    runtime "log4j:log4j:$log4jVersion"
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
+
+
+eclipse {
+    classpath {
+         containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+         containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}

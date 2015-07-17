@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+// defaultTasks '', ''
+
+// Common configurations for all the projects
+subprojects {
+    repositories {
+        mavenCentral()
+        maven { url 'http://repo.spring.io/libs-milestone' }
+        maven { url 'http://repo.spring.io/libs-snapshot' }
+        maven { url 'http://repo.spring.io/libs-release' }
+        maven { url "http://repo.spring.io/plugins-release" }
+        maven { url 'https://repository.apache.org/content/repositories/snapshots' }
+    }
+    configurations.all {
+        // Don't cache -SNAPSHOT and + versions
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+        resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+    }
+}
+
+allprojects {
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.incremental = true
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:rawtypes"
+        }
+    }
+}
+
+ext {
+    springBootVersion = '1.2.5.RELEASE'
+    slf4jVersion = '1.7.10'
+    log4jVersion = '1.2.17'
+    hibernateVersion = '1.0.1.Final'
+    geodeVersion = '1.7.0.APACHE-GEODE-EA-SNAPSHOT'
+}

@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+    id 'com.github.johnrengelman.shadow' version '1.2.1'
+}
+
+defaultTasks 'clean', 'shadowJar'
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.springsource.org/lib-release" }
+}
+
+jar {
+    baseName = 'jp-geode-shell'
+    version = '0.0.1-SNAPSHOT'
+    manifest {
+        attributes 'Main-Class': 'org.springframework.shell.Bootstrap'
+    }
+}
+
+shadowJar {
+    // http://robert-reiz.com/2011/11/14/832/
+    mergeServiceFiles {
+        include 'META-INF/spring*'
+    }
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    compile 'org.springframework.shell:spring-shell:1.1.0.RELEASE'
+    compile 'org.apache.httpcomponents:httpclient:4.5'
+}

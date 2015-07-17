@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<included>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%date - %-5level [%thread] %logger - %msg%n</pattern>
+
+            <!-- example with coloring -->
+            <!-- <pattern>%date - %highlight(%-5level) [%thread] %cyan(%logger) - %msg%n</pattern> -->
+        </encoder>
+    </appender>
+
+    <root level="warn">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+    <logger name="net.joaopeixoto.geode" level="debug" />
+</included>

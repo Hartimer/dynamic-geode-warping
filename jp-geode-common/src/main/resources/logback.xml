@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <!-- Propagate logging level changes to jul -->
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator"/>
+
+    <!-- load variables from our standard location -->
+    <variable resource="application.properties" />
+
+    <!-- load the correct logging configuration -->
+    <include resource="logback-${app.environment}.xml" />
+</configuration>

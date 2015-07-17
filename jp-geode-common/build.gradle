@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+jar {
+    baseName = 'jp-geode-common'
+    version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile ("org.springframework.data:spring-data-gemfire:$geodeVersion") {
+        exclude module : 'spring-boot-starter-logging'
+//        exclude module : "org.apache.logging.log4j:log4j-slf4j-impl:2.1"
+        // /org.apache.logging.log4j/log4j-slf4j-impl/2.1
+    }
+    compile "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:$hibernateVersion"
+    runtime "org.slf4j:slf4j-log4j12:$slf4jVersion"
+    runtime "log4j:log4j:$log4jVersion"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}

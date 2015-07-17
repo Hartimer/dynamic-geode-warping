@@ -1,0 +1,41 @@
+body {
+    text-align: center;
+    background-color: #eee;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+footer {
+    position: fixed;
+    top: 0;
+    right: 10px;
+    opacity: .5;
+}
+
+jp-geode-ts-event {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+#chart {
+    height: 250px;
+    margin-bottom: 35px
+}
+
+#events {
+    .title {
+        display: block;
+        margin-bottom: 50px
+    }
+}
+
+.ts-event-chart {
+    display: inline-block;
+    width: 200px;
+    height: 145px;
+}
+
+.ts-event-count {
+    display: inline-block;
+    position: absolute;
+    margin-left: -22px;
+}

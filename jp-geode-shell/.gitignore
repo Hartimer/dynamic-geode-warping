@@ -1,0 +1,9 @@
+build
+*.iml
+.project
+.settings
+/bin
+*.log
+.classpath
+.gradle
+.DS_Store
